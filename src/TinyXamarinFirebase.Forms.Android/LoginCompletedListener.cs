@@ -1,0 +1,20 @@
+﻿using Android.Gms.Tasks;
+
+namespace TinyXamarinFirebase.Froms.Droid
+{
+    internal class LoginCompletedListener : Java.Lang.Object, IOnCompleteListener
+    {
+        private FirebasePromise<bool> completedListener;
+
+        public LoginCompletedListener(FirebasePromise<bool> completedListener)
+        {
+            this.completedListener = completedListener;
+        }
+
+
+        public void OnComplete(Task task)
+        {
+            completedListener.OnComplete(task.IsSuccessful);
+        }
+    }
+}

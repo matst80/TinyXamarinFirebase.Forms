@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0517121-CB66-48E8-98A2-8725BA4E92AA}</ProjectGuid>
+    <Description>TinyXamarinFirebase.Forms</Description>
+    <PackageId>TinyXamarinFirebase.Forms</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>mats</Authors>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TinyXamarinFirebase.Forms</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>TinyXamarinFirebase.Forms.NuGet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinyXamarinFirebase.Forms.Android\TinyXamarinFirebase.Forms.Android.csproj">
+      <Project>{6572AABD-9574-4B15-997B-425BF5A9B0FE}</Project>
+      <Name>TinyXamarinFirebase.Forms.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TinyXamarinFirebase.Forms.iOS\TinyXamarinFirebase.Forms.iOS.csproj">
+      <Project>{12D7432E-D280-4EEF-AED6-09135D6985CB}</Project>
+      <Name>TinyXamarinFirebase.Forms.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging">
+      <Version>0.2.2</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />
+</Project>

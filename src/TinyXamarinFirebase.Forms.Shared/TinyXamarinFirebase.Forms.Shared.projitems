@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{949EC34E-2487-4FED-A926-E5E836C7AE22}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TinyXamarinFirebase.Forms</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseChildChangeEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventDelegateWithPersistantObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventOnUIDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebasePromise.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FirebaseXamarinHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseEventDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseEventDelegateWithObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SnapshotNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypePropertyHelper.cs" />
+  </ItemGroup>
+</Project>
