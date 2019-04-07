@@ -7,7 +7,7 @@ using Java.Lang;
 namespace TinyXamarinFirebase.Froms.Droid
 {
 
-    public class ToNavtiveConverter
+    public class ToNativeConverter
     {
         public JavaDictionary<string, Java.Lang.Object> ToNative(Type type, object data)
         {
@@ -15,7 +15,7 @@ namespace TinyXamarinFirebase.Froms.Droid
             var ret = new JavaDictionary<string, Java.Lang.Object>();
             foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
             {
-                var prp = item.Value.Item1;
+                var prp = item.Value.Property;
                 var key = item.Key;
                 var objData = prp.GetValue(data);
                 if (objData != null)
@@ -65,7 +65,7 @@ namespace TinyXamarinFirebase.Froms.Droid
             }
             foreach (var item in TypePropertyHelper.GetFirebaseProperties(returnType))
             {
-                var prp = item.Value.Item1;
+                var prp = item.Value.Property;
                 var key = (string)item.Key;
                 if (dict.Contains(key))
                 {

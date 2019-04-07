@@ -15,7 +15,7 @@ namespace TinyXamarinFirebase.Froms
             return GetFirebaseProperties(typeof(T));
         }
 
-        public static Dictionary<string, (PropertyInfo, FirebaseAttribute)> GetFirebaseProperties(Type type)
+        public static Dictionary<string, (PropertyInfo Property, FirebaseAttribute CustomAttribute) > GetFirebaseProperties(Type type)
         {
 
             if (!cache.ContainsKey(type))

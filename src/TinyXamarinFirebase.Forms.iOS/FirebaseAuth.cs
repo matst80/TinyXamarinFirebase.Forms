@@ -1,8 +1,8 @@
 ﻿namespace TinyXamarinFirebase.Froms.iOS
 {
-    public class FirebaseAuthImplementationIos : IFirebaseAuth
+    public class FirebaseAuth : IFirebaseAuth
     {
-        public FirebaseAuthImplementationIos()
+        public FirebaseAuth()
         {
 
         }

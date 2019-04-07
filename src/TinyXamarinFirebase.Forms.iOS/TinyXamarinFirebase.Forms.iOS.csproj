@@ -56,8 +56,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataConverter.cs" />
-    <Compile Include="FirebaseAuthImplementationIos.cs" />
-    <Compile Include="FirebaseImplementationIos.cs" />
+    <Compile Include="FirebaseAuth.cs" />
+    <Compile Include="FirebaseDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

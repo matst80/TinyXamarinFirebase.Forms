@@ -2,6 +2,11 @@
 
 namespace TinyXamarinFirebase.Froms
 {
+    public interface IFirebaseStorage
+    {
+
+    }
+
     public interface IFirebaseAuth
     {
         void SignInWithCustomToken(string token, FirebaseLoginPromise completedPromise);
@@ -10,6 +15,7 @@ namespace TinyXamarinFirebase.Froms
 
     public interface IFirebaseDatabase
     {
+        void SetPersistenceEnabled(bool status);
         void GetData(string path, FirebaseEventDelegate handler);
         void GetData<T>(string path, FirebaseEventDelegate<T> handler);
         void OnChildChange<T>(string path, FirebaseChildChangeEnum changeType, FirebaseChildEventDelegate<T> handler);

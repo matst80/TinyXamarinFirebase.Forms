@@ -10,18 +10,20 @@ using System;
 namespace TinyXamarinFirebase.Froms.iOS
 {
 
-    public class FirebaseImplementationIos : IFirebaseDatabase
+    public class FirebaseDatabase : IFirebaseDatabase
     {
         private DataConverter converter;
+        private Database instance;
 
-        public FirebaseImplementationIos()
+        public FirebaseDatabase()
         {
             converter = new DataConverter();
+            instance = Database.DefaultInstance;
         }
 
         private DatabaseReference GetNodeFromPath(string path)
         {
-            DatabaseReference rootNode = Database.DefaultInstance.GetRootReference();
+            DatabaseReference rootNode = instance.GetRootReference();
 
             foreach (var part in path.Split('/'))
             {
@@ -143,6 +145,11 @@ namespace TinyXamarinFirebase.Froms.iOS
         {
             var rootNode = GetNodeFromPath(path);
             rootNode.RemoveValue();
+        }
+
+        public void SetPersistenceEnabled(bool status)
+        {
+            instance.PersistenceEnabled = status;
         }
     }
 }

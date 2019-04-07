@@ -17,12 +17,12 @@ namespace TinyXamarinFirebase.Froms.Droid
     public class FirebaseDatabase : IFirebaseDatabase
     {
         private Firebase.Database.FirebaseDatabase database;
-        private ToNavtiveConverter converter;
+        private ToNativeConverter converter;
 
         public FirebaseDatabase(FirebaseApp app)
         {
             database = Firebase.Database.FirebaseDatabase.GetInstance(app);
-            converter = new ToNavtiveConverter();
+            converter = new ToNativeConverter();
         }
 
         public void GetData(string path, FirebaseEventDelegate handler)
@@ -57,6 +57,11 @@ namespace TinyXamarinFirebase.Froms.Droid
         public void Remove(string path)
         {
             database.GetReference(path).RemoveValue();
+        }
+
+        public void SetPersistenceEnabled(bool status)
+        {
+            database.SetPersistenceEnabled(status);
         }
     }
 }
