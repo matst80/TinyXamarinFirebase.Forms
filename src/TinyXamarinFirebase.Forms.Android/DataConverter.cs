@@ -9,21 +9,53 @@ namespace TinyXamarinFirebase.Froms.Droid
 
     public class ToNativeConverter
     {
-        public JavaDictionary<string, Java.Lang.Object> ToNative(Type type, object data)
+        public Java.Lang.Object ToNative(Type type, object data)
         {
-
-            var ret = new JavaDictionary<string, Java.Lang.Object>();
-            foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
+            var dataType = data.GetType();
+            if (dataType.IsPrimitive || data is string)
             {
-                var prp = item.Value.Property;
-                var key = item.Key;
-                var objData = prp.GetValue(data);
-                if (objData != null)
+                if (data is bool b)
                 {
-                    ret.Add(key, objData);
+                    return new Java.Lang.Boolean(b);
                 }
+                else if (data is float f)
+                {
+                    return new Java.Lang.Float(f);
+                }
+                else if (data is double d)
+                {
+                    return new Java.Lang.Double(d);
+                }
+                else if (data is long l)
+                {
+                    return new Java.Lang.Long(l);
+                }
+                else if (data is int i)
+                {
+                    return new Java.Lang.Integer(i);
+                }
+                else if (data is string s)
+                {
+                    return new Java.Lang.String(s);
+                }
+                return (Java.Lang.Object)data;
             }
-            return ret;
+            else
+            {
+                var ret = new JavaDictionary<string, Java.Lang.Object>();
+                foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
+                {
+                    var prp = item.Value.Property;
+                    var key = item.Key;
+                    var objData = prp.GetValue(data);
+                    if (objData != null)
+                    {
+                        ret.Add(key, objData);
+                    }
+                }
+                return ret;
+            }
+            //return (Java.Lang.Object) data;
         }
     }
 
@@ -95,7 +127,11 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         public T Convert<T>(Java.Lang.Object snapshot, object objectToModify = null)
         {
-
+            var tType = typeof(T);
+            if (tType.IsPrimitive || typeof(string).IsAssignableFrom(tType))
+            {
+                return (T)System.Convert.ChangeType(snapshot, tType);
+            }
             var ret = objectToModify ?? Activator.CreateInstance<T>();
             if (snapshot is JavaDictionary dict)
             {

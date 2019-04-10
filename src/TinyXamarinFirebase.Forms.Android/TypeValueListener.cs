@@ -16,7 +16,7 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         public void OnCancelled(DatabaseError error)
         {
-            eventDelegate.OnError(new FirebaseException(error));
+            eventDelegate?.OnError?.Invoke(new FirebaseException(error));
         }
 
         public void OnDataChange(DataSnapshot snapshot)

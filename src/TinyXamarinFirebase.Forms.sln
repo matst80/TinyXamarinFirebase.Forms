@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyXamarinFirebase.Forms.A
 EndProject
 Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "TinyXamarinFirebase.Forms.NuGet", "TinyXamarinFirebase.Forms.NuGet\TinyXamarinFirebase.Forms.NuGet.nuproj", "{C0517121-CB66-48E8-98A2-8725BA4E92AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyXamarinFirebase.Forms.Abstractions", "TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj", "{A5169636-0870-4368-A889-B75B9507B77F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{C0517121-CB66-48E8-98A2-8725BA4E92AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0517121-CB66-48E8-98A2-8725BA4E92AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0517121-CB66-48E8-98A2-8725BA4E92AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5169636-0870-4368-A889-B75B9507B77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5169636-0870-4368-A889-B75B9507B77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5169636-0870-4368-A889-B75B9507B77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5169636-0870-4368-A889-B75B9507B77F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

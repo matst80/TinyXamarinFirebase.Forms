@@ -17,4 +17,19 @@ namespace TinyXamarinFirebase.Froms.Droid
             completedListener.OnComplete(task.IsSuccessful);
         }
     }
+
+    internal class CommandCompletedListener : Java.Lang.Object, IOnCompleteListener
+    {
+        private FirebasePromise<bool> completedListener;
+
+        public CommandCompletedListener(FirebasePromise<bool> completedListener)
+        {
+            this.completedListener = completedListener;
+        }
+
+        public void OnComplete(Task task)
+        {
+            completedListener.OnComplete(task.IsSuccessful);
+        }
+    }
 }

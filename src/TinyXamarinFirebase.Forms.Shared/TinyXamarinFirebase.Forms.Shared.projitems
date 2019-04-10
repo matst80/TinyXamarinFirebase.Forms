@@ -9,18 +9,6 @@
     <Import_RootNamespace>TinyXamarinFirebase.Forms</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseAttribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseChildChangeEnum.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventDelegate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventDelegateWithPersistantObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseEventOnUIDelegate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseException.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebasePromise.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FirebaseXamarinHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseDatabase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseEventDelegate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IFirebaseEventDelegateWithObject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SnapshotNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TypePropertyHelper.cs" />
   </ItemGroup>
 </Project>

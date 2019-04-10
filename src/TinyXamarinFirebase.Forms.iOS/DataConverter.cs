@@ -102,7 +102,11 @@ namespace TinyXamarinFirebase.Froms.iOS
 
         public T Convert<T>(NSObject snapshot, object objectToModify = null)
         {
-
+            var tType = typeof(T);
+            if (tType.IsPrimitive || snapshot is NSString)
+            {
+                return (T)Convert(snapshot, tType, objectToModify);
+            }
             var ret = objectToModify ?? Activator.CreateInstance<T>();
             if (snapshot is NSDictionary dict)
             {
@@ -144,9 +148,14 @@ namespace TinyXamarinFirebase.Froms.iOS
             return null;
         }
 
-        public NSDictionary ToNative<T>(T data)
+        public NSObject ToNative<T>(T data)
         {
             var type = typeof(T);
+
+            if (type.IsPrimitive || data is string)
+            {
+                return ToNative((object)data);
+            }
 
             NSMutableDictionary ret = new NSMutableDictionary();
             foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
