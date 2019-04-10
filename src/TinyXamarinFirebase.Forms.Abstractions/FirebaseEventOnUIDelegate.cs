@@ -3,7 +3,7 @@ namespace TinyXamarinFirebase.Froms
 {
     public class FirebaseEventOnUIDelegate<T> : FirebaseEventDelegateWithPersistantObject<T>
     {
-        public FirebaseEventOnUIDelegate(Action<T> onSnapshot)
+        public FirebaseEventOnUIDelegate(Action<T> onSnapshot) 
         {
             OnSnapshot = (data) => 
                 FirebaseXamarinHelper.RunOnUIThread(() => 
