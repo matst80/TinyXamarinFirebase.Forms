@@ -4,6 +4,7 @@ using Foundation;
 
 namespace TinyXamarinFirebase.Froms.iOS
 {
+
     public class FirebaseAuth : IFirebaseAuth
     {
 
