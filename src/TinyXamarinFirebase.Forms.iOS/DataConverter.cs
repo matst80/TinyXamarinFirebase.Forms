@@ -2,6 +2,7 @@
 using Foundation;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace TinyXamarinFirebase.Froms.iOS
 {
@@ -56,17 +57,31 @@ namespace TinyXamarinFirebase.Froms.iOS
                 var type = nodeDict.GetType();
                 var keyType = GetItemType(type, 0);
                 var dictType = GetItemType(type, 1);
+                var keysToRemove = new List<object>();
+                foreach(var key in nodeDict.Keys)
+                {
+                    keysToRemove.Add(key);
+                }
                 foreach (var itemData in dict)
                 {
                     var key = Convert(itemData.Key, keyType);
+                    keysToRemove.Remove(key);
                     if (nodeDict.Contains(key))
                     {
                         var item = Convert(itemData, dictType, nodeDict[key]);
+
                     }
                     else
                     {
                         var val = Convert(itemData.Value, dictType);
                         nodeDict.Add(key, val);
+                    }
+                }
+                foreach(var keyToRemove in keysToRemove)
+                {
+                    if (nodeDict.Contains(keyToRemove))
+                    {
+                        nodeDict.Remove(keyToRemove);
                     }
                 }
             }
@@ -125,7 +140,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             {
                 return new NSNumber(lng);
             }
-            if (data is long d)
+            if (data is double d)
             {
                 return new NSNumber(d);
             }
@@ -154,7 +169,11 @@ namespace TinyXamarinFirebase.Froms.iOS
 
             if (type.IsPrimitive || data is string)
             {
-                return ToNative((object)data);
+                if (data is T)
+                {
+                    return ToNative((object)data);
+                }
+                return new NSObject();
             }
 
             NSMutableDictionary ret = new NSMutableDictionary();

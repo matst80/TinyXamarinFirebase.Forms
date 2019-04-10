@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using Java.Lang;
+using System.Collections.Generic;
 
 namespace TinyXamarinFirebase.Froms.Droid
 {
@@ -68,7 +69,10 @@ namespace TinyXamarinFirebase.Froms.Droid
             {
                 return Convert(dict, resultType, objectToModify);
             }
-
+            //if (platformData is DictionaryEntry entry)
+            //{
+            //    return Convert()
+            //}
             return System.Convert.ChangeType(platformData, resultType);
 
         }
@@ -81,17 +85,30 @@ namespace TinyXamarinFirebase.Froms.Droid
                 var type = nodeDict.GetType();
                 var keyType = GetItemType(type, 0);
                 var dictType = GetItemType(type, 1);
+                var keysToRemove = new List<object>();
+                foreach (var key in nodeDict.Keys)
+                {
+                    keysToRemove.Add(key);
+                }
                 foreach (DictionaryEntry itemData in dict)
                 {
                     var key = Convert(itemData.Key, keyType);
+                    keysToRemove.Remove(key);
                     if (nodeDict.Contains(key))
                     {
-                        var item = Convert(itemData, dictType, nodeDict[key]);
+                        var item = Convert(itemData.Value, dictType, nodeDict[key]);
                     }
                     else
                     {
                         var val = Convert(itemData.Value, dictType);
                         nodeDict.Add(key, val);
+                    }
+                }
+                foreach (var keyToRemove in keysToRemove)
+                {
+                    if (nodeDict.Contains(keyToRemove))
+                    {
+                        nodeDict.Remove(keyToRemove);
                     }
                 }
             }
@@ -130,6 +147,8 @@ namespace TinyXamarinFirebase.Froms.Droid
             var tType = typeof(T);
             if (tType.IsPrimitive || typeof(string).IsAssignableFrom(tType))
             {
+                if (snapshot == null)
+                    return default(T);
                 return (T)System.Convert.ChangeType(snapshot, tType);
             }
             var ret = objectToModify ?? Activator.CreateInstance<T>();
