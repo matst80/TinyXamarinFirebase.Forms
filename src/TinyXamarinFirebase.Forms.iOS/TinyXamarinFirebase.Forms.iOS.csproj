@@ -64,6 +64,9 @@
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\9.2.0-5\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v8.1\Mono.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.Storage">
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Storage.3.0.2\lib\Xamarin.iOS10\Firebase.Storage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="FirebaseAuth.cs" />
     <Compile Include="FirebaseDatabase.cs" />
     <Compile Include="IosMutableData.cs" />
+    <Compile Include="FirebaseStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

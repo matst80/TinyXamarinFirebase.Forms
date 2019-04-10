@@ -94,6 +94,12 @@
     <Reference Include="Xamarin.Firebase.Database">
       <HintPath>..\packages\Xamarin.Firebase.Database.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Database.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Firebase.Storage.Common">
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Storage">
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +113,9 @@
     <Compile Include="ValueListenerBase.cs" />
     <Compile Include="FuncTransactionHandler.cs" />
     <Compile Include="AndroidFirebaseMutableData.cs" />
+    <Compile Include="FirebaseStorage.cs" />
+    <Compile Include="FileCompletedListener.cs" />
+    <Compile Include="DownloadUrlCompletedListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -121,4 +130,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
+  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets')" />
+  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets')" />
 </Project>
