@@ -12,7 +12,7 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         public FirebaseStorage(FirebaseApp app)
         {
-            storage = Firebase.Storage.FirebaseStorage.GetInstance(app);
+            storage = Firebase.Storage.FirebaseStorage.GetInstance(app, "gs://people-at-coor-dev.appspot.com"); 
         }
 
         public async Task<bool> DeleteFile(string path)
@@ -28,10 +28,10 @@ namespace TinyXamarinFirebase.Froms.Droid
             reference.PutStream(stream).AddOnCompleteListener(new FileCompletedListener(reference, onCompleted));
         }
 
-        public void PutFile(string path, Uri uri, FirebasePromise<FirebaseFileResult> onCompleted)
+        public void PutFile(string path, string uri, FirebasePromise<FirebaseFileResult> onCompleted)
         {
             var reference = storage.GetReference(path);
-            reference.PutFile(Android.Net.Uri.Parse(uri.AbsolutePath)).AddOnCompleteListener(new FileCompletedListener(reference, onCompleted));
+            reference.PutFile(Android.Net.Uri.FromFile(new Java.IO.File(uri))).AddOnCompleteListener(new FileCompletedListener(reference, onCompleted));
         }
     }
 }

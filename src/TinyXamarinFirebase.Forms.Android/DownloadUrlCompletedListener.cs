@@ -19,12 +19,16 @@ namespace TinyXamarinFirebase.Froms.Droid
             if (task.IsSuccessful)
             {
 
+                //uploadTask.Result.
                 onCompleted?.OnComplete(new FirebaseFileResult()
                 {
                     IsSuccess = true,
-                    DownloadUrl = ""
+                    DownloadUrl = task.Result.ToString()
                 });
+
+
             }
+
         }
     }
 }
