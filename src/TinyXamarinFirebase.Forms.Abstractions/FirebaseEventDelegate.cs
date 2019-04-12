@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
 
 

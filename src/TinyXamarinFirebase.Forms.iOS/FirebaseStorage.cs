@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Firebase.Storage;
 using Foundation;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
     public class FirebaseStorage : IFirebaseStorage
     {
@@ -36,17 +36,25 @@ namespace TinyXamarinFirebase.Froms.iOS
             });
         }
 
-        public void PutFile(string path, Uri uri, FirebasePromise<FirebaseFileResult> onCompleted)
+        public void PutFile(string path, string uri, FirebasePromise<FirebaseFileResult> onCompleted)
         {
             var uploadReference = storage.GetRootReference().GetChild(path);
-            uploadReference.PutFile(NSUrl.FromString(uri.AbsolutePath), null, async (metadata, error) =>
+            uploadReference.PutFile(NSUrl.FromFilename(uri), null, async (metadata, error) =>
             {
-                var downloadUrl = await uploadReference.GetDownloadUrlAsync();
-                onCompleted?.OnComplete(new FirebaseFileResult()
+                try
                 {
-                    IsSuccess = error == null,
-                    DownloadUrl = downloadUrl.AbsoluteString
-                });
+                    var downloadUrl = await uploadReference.GetDownloadUrlAsync();
+                    onCompleted?.OnComplete(new FirebaseFileResult()
+                    {
+                        IsSuccess = error == null,
+                        DownloadUrl = downloadUrl.AbsoluteString
+                    });
+                }
+                catch(Exception ex)
+                {
+                    onCompleted?.OnError(new FirebaseException(ex));
+                }
+
             });
         }
     }

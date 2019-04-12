@@ -2,7 +2,7 @@
 using Firebase.Auth;
 using Foundation;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
 
     public class FirebaseAuth : IFirebaseAuth

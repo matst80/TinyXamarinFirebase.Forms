@@ -1,6 +1,6 @@
 ﻿using Android.Gms.Tasks;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
     internal class LoginCompletedListener : Java.Lang.Object, IOnCompleteListener
     {

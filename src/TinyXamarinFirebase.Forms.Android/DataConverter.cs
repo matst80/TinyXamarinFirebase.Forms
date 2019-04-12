@@ -5,12 +5,12 @@ using System.Linq;
 using Java.Lang;
 using System.Collections.Generic;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
 
-    public class ToNativeConverter
+    public static class ToNativeConverter
     {
-        public Java.Lang.Object ToNative(Type type, object data)
+        public static Java.Lang.Object ToNative(Type type, object data)
         {
             var dataType = data.GetType();
             if (dataType.IsPrimitive || data is string)
@@ -60,10 +60,10 @@ namespace TinyXamarinFirebase.Froms.Droid
         }
     }
 
-    public class DataConverter
+    public static class DataConverter
     {
       
-        public object Convert(object platformData, Type resultType, object objectToModify = null)
+        public static object Convert(object platformData, Type resultType, object objectToModify = null)
         {
             if (platformData is JavaDictionary dict)
             {
@@ -77,7 +77,7 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         }
 
-        public object Convert(JavaDictionary dict, Type returnType, object objectToModify = null)
+        public static object Convert(JavaDictionary dict, Type returnType, object objectToModify = null)
         {
             var ret = objectToModify ?? Activator.CreateInstance(returnType);
             if (ret is IDictionary nodeDict)
@@ -133,7 +133,7 @@ namespace TinyXamarinFirebase.Froms.Droid
             return ret;
         }
 
-        private Type GetItemType(Type type, int nr = 1)
+        private static Type GetItemType(Type type, int nr = 1)
         {
             if (!type.GenericTypeArguments.Any())
             {
@@ -142,7 +142,7 @@ namespace TinyXamarinFirebase.Froms.Droid
             return type.GenericTypeArguments[nr];
         }
 
-        public T Convert<T>(Java.Lang.Object snapshot, object objectToModify = null)
+        public static T Convert<T>(Java.Lang.Object snapshot, object objectToModify = null)
         {
             var tType = typeof(T);
             if (tType.IsPrimitive || typeof(string).IsAssignableFrom(tType))

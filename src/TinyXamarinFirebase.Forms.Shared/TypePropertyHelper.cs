@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
 
     public static class TypePropertyHelper

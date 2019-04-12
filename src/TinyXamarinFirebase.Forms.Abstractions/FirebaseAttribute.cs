@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class FirebaseAttribute : Attribute

@@ -7,7 +7,7 @@
     <ProjectGuid>{C0517121-CB66-48E8-98A2-8725BA4E92AA}</ProjectGuid>
     <Description>TinyXamarinFirebase.Forms</Description>
     <PackageId>TinyXamarinFirebase.Forms</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Authors>mats</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,6 +16,9 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>TinyXamarinFirebase.Forms.NuGet</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Title>Firebase for Xamarin Forms</Title>
+    <PackageProjectUrl>https://github.com/matst80/TinyXamarinFirebase.Forms</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/matst80/TinyXamarinFirebase.Forms/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +38,10 @@
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.iOS\TinyXamarinFirebase.Forms.iOS.csproj">
       <Project>{12D7432E-D280-4EEF-AED6-09135D6985CB}</Project>
       <Name>TinyXamarinFirebase.Forms.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
+      <Project>{A5169636-0870-4368-A889-B75B9507B77F}</Project>
+      <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

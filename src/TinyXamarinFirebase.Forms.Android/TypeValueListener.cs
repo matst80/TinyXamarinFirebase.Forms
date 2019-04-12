@@ -1,17 +1,16 @@
 ﻿using Firebase.Database;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
 
     public class TypeValueListener<T> : ValueListenerBase, IValueEventListener
     {
         private readonly FirebaseEventDelegate<T> eventDelegate;
-        private readonly DataConverter converter;
+
 
         public TypeValueListener(FirebaseEventDelegate<T> eventDelegate)
         {
             this.eventDelegate = eventDelegate;
-            this.converter = new DataConverter();
         }
 
         public void OnCancelled(DatabaseError error)
@@ -25,7 +24,7 @@ namespace TinyXamarinFirebase.Froms.Droid
             {
                 FirebaseXamarinHelper.RunOnUIThread(() =>
                 {
-                    var snapData = converter.Convert<T>(snapshot.Value, GetObjectFromHandler(eventDelegate));
+                    var snapData = DataConverter.Convert<T>(snapshot.Value, GetObjectFromHandler(eventDelegate));
                     eventDelegate.OnSnapshot(snapData);
                     SetObjectFromHandler(eventDelegate, snapData);
                 });

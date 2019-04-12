@@ -1,4 +1,4 @@
-﻿namespace TinyXamarinFirebase.Froms
+﻿namespace TinyXamarinFirebase.Forms
 {
     public interface IFirebaseEventDelegate
     {
