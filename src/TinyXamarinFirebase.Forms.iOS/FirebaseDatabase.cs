@@ -12,18 +12,18 @@ namespace TinyXamarinFirebase.Froms.iOS
 
     public class FirebaseDatabase : IFirebaseDatabase
     {
-        private DataConverter converter;
+
         private Database instance;
 
         public FirebaseDatabase()
         {
-            converter = new DataConverter();
             instance = Database.DefaultInstance;
         }
 
         private DatabaseReference GetNodeFromPath(string path)
         {
             DatabaseReference rootNode = instance.GetRootReference();
+            DatabaseQuery q = rootNode.GetQueryLimitedToLast(10);
 
             foreach (var part in path.Split('/'))
             {
@@ -35,147 +35,32 @@ namespace TinyXamarinFirebase.Froms.iOS
 
         public object Observe<T>(string path, FirebaseEventDelegate<T> handler)
         {
-            var rootNode = GetNodeFromPath(path);
-
-            return (uint)rootNode.ObserveEvent(DataEventType.Value, (snapshot) =>
-            {
-                if (snapshot.Exists)
-                {
-                    FirebaseXamarinHelper.RunOnUIThread(() =>
-                    {
-                        var data = snapshot.GetValue();
-                        var snapData = converter.Convert<T>(data, GetObjectFromHandler(handler));
-                        SetObjectFromHandler(handler, snapData);
-                        handler.OnSnapshot(snapData);
-                    });
-                }
-                else
-                {
-                    handler?.OnError?.Invoke(new SnapshotNotFoundException());
-                }
-
-            }, (error) =>
-            {
-                handler?.OnError?.Invoke(new FirebaseException(error));
-            });
+            return GetChild(path).Observe<T>(handler);
         }
 
         public void ObserveSingle<T>(string path, FirebaseEventDelegate<T> handler)
         {
-            var rootNode = GetNodeFromPath(path);
-
-            rootNode.ObserveSingleEvent(DataEventType.Value, (snapshot) =>
-            {
-                if (snapshot.Exists)
-                {
-                    FirebaseXamarinHelper.RunOnUIThread(() =>
-                    {
-                        var data = snapshot.GetValue();
-                        var snapData = converter.Convert<T>(data, GetObjectFromHandler(handler));
-                        SetObjectFromHandler(handler, snapData);
-                        handler.OnSnapshot(snapData);
-                    });
-                }
-                else
-                {
-                    handler?.OnError?.Invoke(new SnapshotNotFoundException());
-                }
-
-            }, (error) =>
-            {
-                handler?.OnError?.Invoke(new FirebaseException(error));
-            });
-        }
-
-        private void SetObjectFromHandler(IFirebaseEventDelegate handler, object snapData)
-        {
-            if (handler is IFirebaseEventDelegateWithObject withObject && snapData != null)
-            {
-                if (withObject.DataInstance != snapData)
-                {
-                    withObject.DataInstance = snapData;
-                }
-            }
-        }
-
-        private object GetObjectFromHandler(IFirebaseEventDelegate handler)
-        {
-            if (handler is IFirebaseEventDelegateWithObject withObject)
-            {
-                return withObject.DataInstance;
-            }
-            return null;
-        }
-
-        private void HandleChildChange<T>(FirebaseChildEventDelegate<T> handler, FirebaseChildChangeEnum type, DataSnapshot snapshot, string previousChildName)
-        {
-            FirebaseXamarinHelper.RunOnUIThread(() =>
-            {
-                var snapData = converter.Convert<T>(snapshot.GetValue(), GetObjectFromHandler(handler));
-                handler.OnSnapshot(type, previousChildName, new KeyValuePair<string, T>(snapshot.Key, snapData));
-                SetObjectFromHandler(handler, snapData);
-            });
+            GetChild(path).ObserveSingle<T>(handler);
         }
 
         public object OnChildChange<T>(string path, FirebaseChildChangeEnum changeType, FirebaseChildEventDelegate<T> handler)
         {
-            var rootNode = GetNodeFromPath(path);
-            int changeIdx = (int)changeType;
-            return (uint)rootNode.ObserveEvent((DataEventType)changeIdx, (snapshot) =>
-            {
-                HandleChildChange(handler, changeType, snapshot, null);
-            });
+            return GetChild(path).OnChildChange<T>(changeType, handler);
         }
 
         public string Push<T>(string path, T data, FirebasePromise<bool> onCompletion = null)
         {
-            var rootNode = GetNodeFromPath(path);
-            rootNode = rootNode.GetChildByAutoId();
-            rootNode.SetValue(converter.ToNative(data), (error, reference) =>
-            {
-                if (onCompletion != null)
-                {
-                    onCompletion.OnComplete(error == null);
-                    if (error != null)
-                    {
-                        onCompletion.OnError(new FirebaseException(error));
-                    }
-                }
-            });
-            return rootNode.Key;
+            return GetChild(path).Push<T>(data, onCompletion);
         }
 
         public string Put<T>(string path, T data, FirebasePromise<bool> onCompletion = null)
         {
-            var rootNode = GetNodeFromPath(path);
-            rootNode.SetValue(converter.ToNative(data), (error, reference) =>
-            {
-                if (onCompletion!=null)
-                {
-                    onCompletion.OnComplete(error == null);
-                    if (error!=null)
-                    {
-                        onCompletion.OnError(new FirebaseException(error));
-                    }
-                }
-            });
-            return rootNode.Key;
+            return GetChild(path).Put<T>(data, onCompletion);
         }
 
         public void Remove(string path, FirebasePromise<bool> onCompletion = null)
         {
-            var rootNode = GetNodeFromPath(path);
-            rootNode.RemoveValue((error, reference) =>
-            {
-                if (onCompletion != null)
-                {
-                    onCompletion.OnComplete(error == null);
-                    if (error != null)
-                    {
-                        onCompletion.OnError(new FirebaseException(error));
-                    }
-                }
-            });
+            GetChild(path).Remove(onCompletion);
         }
 
         public void SetPersistenceEnabled(bool status)
@@ -185,32 +70,22 @@ namespace TinyXamarinFirebase.Froms.iOS
 
         public void Transaction<T>(string path, Action<FirebaseMutableData<T>> transaction, FirebasePromise<bool> onCompletion = null)
         {
-            var rootNode = GetNodeFromPath(path);
-            rootNode.RunTransaction((currentData) =>
-            {
-                if (transaction != null)
-                {
-                    transaction.Invoke(new IosMutableData<T>(currentData));
-                }
-                return TransactionResult.Success(currentData);
-            },(error, commited, snapshot) => {
-                if (onCompletion != null)
-                {
-                    onCompletion.OnComplete(commited);
-                    if (error != null)
-                    {
-                        onCompletion.OnError(new FirebaseException(error));
-                    }
-                }
-            });
+            GetChild(path).Transaction<T>(transaction, onCompletion);
         }
 
         public void RemoveObserver(string path, object listener)
         {
-            var rootNode = GetNodeFromPath(path);
-            if (listener is uint nr) {
-                rootNode.RemoveObserver(new nuint(nr));
-            }
+            GetChild(path).RemoveObserver(listener);
+        }
+
+        public IFirebaseReference GetChild(string path)
+        {
+            return new FirebaseReferenceNative(GetNodeFromPath(path));
+        }
+
+        public IFirebaseReference GetRoot()
+        {
+            return new FirebaseReferenceNative(instance.GetRootReference());
         }
     }
 }

@@ -36,10 +36,10 @@ namespace TinyXamarinFirebase.Froms.iOS
             });
         }
 
-        public void PutFile(string path, Uri uri, FirebasePromise<FirebaseFileResult> onCompleted)
+        public void PutFile(string path, string uri, FirebasePromise<FirebaseFileResult> onCompleted)
         {
             var uploadReference = storage.GetRootReference().GetChild(path);
-            uploadReference.PutFile(NSUrl.FromString(uri.AbsolutePath), null, async (metadata, error) =>
+            uploadReference.PutFile(NSUrl.FromString(uri), null, async (metadata, error) =>
             {
                 var downloadUrl = await uploadReference.GetDownloadUrlAsync();
                 onCompleted?.OnComplete(new FirebaseFileResult()

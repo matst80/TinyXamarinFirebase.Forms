@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.props" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.props')" />
   <Import Project="..\TinyXamarinFirebase.Forms.Shared\TinyXamarinFirebase.Forms.Shared.projitems" Label="Shared" Condition="Exists('..\TinyXamarinFirebase.Forms.Shared\TinyXamarinFirebase.Forms.Shared.projitems')" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
@@ -43,53 +44,50 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Crosslight.Xamarin.Android.Support.v4.25.3.1\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="Xamarin.Firebase.Database">
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Database.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Database.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Annotations">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Annotations.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Annotations.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Annotations.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Compat">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Compat.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Compat.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Compat.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Compat.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Core.UI">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.UI.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Core.UI.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Core.UI.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Core.UI.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Core.Utils">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.Utils.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Core.Utils.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Core.Utils.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Core.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Media.Compat">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Media.Compat.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Media.Compat.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Media.Compat.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Media.Compat.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Fragment">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Android.Support.Fragment.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Fragment.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Android.Support.Fragment.26.0.2\lib\MonoAndroid80\Xamarin.Android.Support.Fragment.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.GooglePlayServices.Basement">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Basement.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.GooglePlayServices.Basement.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Basement.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.GooglePlayServices.Tasks">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Tasks.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.GooglePlayServices.Tasks.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Firebase.Common">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Common.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Common.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Common.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.GooglePlayServices.Base">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Base.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Base.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.GooglePlayServices.Base.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Base.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Firebase.Auth">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Auth.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Auth.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Firebase.Database.Connection">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Database.Connection.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Database.Connection.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Firebase.Database">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Database.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Database.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Auth.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Auth.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Firebase.Storage.Common">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.Common.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Firebase.Storage">
-      <HintPath>..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.dll</HintPath>
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Database.Connection">
+      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Database.Connection.60.1142.1\lib\MonoAndroid80\Xamarin.Firebase.Database.Connection.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +105,8 @@
     <Compile Include="FirebaseStorage.cs" />
     <Compile Include="FileCompletedListener.cs" />
     <Compile Include="DownloadUrlCompletedListener.cs" />
+    <Compile Include="FirebaseReferenceNative.cs" />
+    <Compile Include="FirebaseQueryNative.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -121,21 +121,5 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
-  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets')" />
-  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Annotations.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Annotations.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Annotations.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Compat.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Compat.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Compat.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.UI.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Core.UI.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.UI.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Core.UI.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.Utils.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Core.Utils.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Core.Utils.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Core.Utils.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Media.Compat.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Media.Compat.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Media.Compat.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Media.Compat.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Android.Support.Fragment.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Fragment.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Android.Support.Fragment.26.0.2\build\MonoAndroid80\Xamarin.Android.Support.Fragment.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Basement.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Basement.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Basement.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Tasks.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Tasks.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Tasks.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Tasks.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Common.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Common.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Base.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.GooglePlayServices.Base.60.1142.1\build\MonoAndroid80\Xamarin.GooglePlayServices.Base.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Auth.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Auth.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Auth.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Auth.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Database.Connection.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Database.Connection.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Database.Connection.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Database.Connection.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Database.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Database.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Database.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Database.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.Common.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.Common.targets')" />
-  <Import Project="..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets" Condition="Exists('..\..\..\Coor\src\packages\Xamarin.Firebase.Storage.60.1142.1\build\MonoAndroid80\Xamarin.Firebase.Storage.targets')" />
+  <Import Project="..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.targets" Condition="Exists('..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.targets')" />
 </Project>

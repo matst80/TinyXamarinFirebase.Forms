@@ -6,14 +6,11 @@ using System.Collections.Generic;
 
 namespace TinyXamarinFirebase.Froms.iOS
 {
-    public class DataConverter
+    public static class DataConverter
     {
-        public DataConverter()
-        {
 
-        }
 
-        public object Convert(object platformData, Type resultType, object objectToModify = null)
+        public static object Convert(object platformData, Type resultType, object objectToModify = null)
         {
             if (platformData is NSString nsString)
             {
@@ -49,7 +46,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             return Activator.CreateInstance(resultType);
         }
 
-        public object Convert(NSDictionary dict, Type returnType, object objectToModify = null)
+        public static object Convert(NSDictionary dict, Type returnType, object objectToModify = null)
         {
             var ret = objectToModify ?? Activator.CreateInstance(returnType);
             if (ret is IDictionary nodeDict)
@@ -106,7 +103,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             return ret;
         }
 
-        private Type GetItemType(Type type, int nr = 1)
+        private static Type GetItemType(Type type, int nr = 1)
         {
             if (!type.GenericTypeArguments.Any())
             {
@@ -115,7 +112,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             return type.GenericTypeArguments[nr];
         }
 
-        public T Convert<T>(NSObject snapshot, object objectToModify = null)
+        public static T Convert<T>(NSObject snapshot, object objectToModify = null)
         {
             var tType = typeof(T);
             if (tType.IsPrimitive || snapshot is NSString)
@@ -130,7 +127,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             return (T)ret;
         }
 
-        public NSObject ToNative(object data)
+        public static NSObject ToNative(object data)
         {
             if (data is int i)
             {
@@ -163,7 +160,7 @@ namespace TinyXamarinFirebase.Froms.iOS
             return null;
         }
 
-        public NSObject ToNative<T>(T data)
+        public static NSObject ToNative<T>(T data)
         {
             var type = typeof(T);
 

@@ -98,5 +98,15 @@ namespace TinyXamarinFirebase.Froms.Droid
         {
             database.SetPersistenceEnabled(status);
         }
+
+        public IFirebaseReference GetChild(string path)
+        {
+            return new FirebaseReferenceNative(database.GetReference(path));
+        }
+
+        public IFirebaseReference GetRoot()
+        {
+            return new FirebaseReferenceNative(database.GetReference("/"));
+        }
     }
 }
