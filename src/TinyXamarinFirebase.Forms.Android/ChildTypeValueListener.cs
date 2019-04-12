@@ -7,13 +7,12 @@ namespace TinyXamarinFirebase.Froms.Droid
     {
         private readonly FirebaseChildEventDelegate<T> eventDelegate;
         private readonly FirebaseChildChangeEnum changeType;
-        private readonly DataConverter converter;
+
 
         public ChildTypeValueListener(FirebaseChildEventDelegate<T> eventDelegate, FirebaseChildChangeEnum changeType)
         {
             this.eventDelegate = eventDelegate;
             this.changeType = changeType;
-            this.converter = new DataConverter();
         }
 
         public void OnCancelled(DatabaseError error)
@@ -41,7 +40,7 @@ namespace TinyXamarinFirebase.Froms.Droid
         {
             FirebaseXamarinHelper.RunOnUIThread(() =>
             {
-                var snapData = converter.Convert<T>(snapshot.Value, GetObjectFromHandler(eventDelegate));
+                var snapData = DataConverter.Convert<T>(snapshot.Value, GetObjectFromHandler(eventDelegate));
                 eventDelegate.OnSnapshot(type, previousChildName, new KeyValuePair<string, T>(snapshot.Key, snapData));
                 SetObjectFromHandler(eventDelegate, snapData);
             });

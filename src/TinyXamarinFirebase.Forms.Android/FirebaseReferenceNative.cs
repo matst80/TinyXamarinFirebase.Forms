@@ -14,17 +14,21 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         public object Observe<T>(FirebaseEventDelegate<T> handler)
         {
-            throw new NotImplementedException();
+            var listener = new TypeValueListener<T>(handler);
+            query.AddValueEventListener(listener);
+            return listener;
         }
 
         public void ObserveSingle<T>(FirebaseEventDelegate<T> handler)
         {
-            throw new NotImplementedException();
+            query.AddListenerForSingleValueEvent(new TypeValueListener<T>(handler));
         }
 
         public object OnChildChange<T>(FirebaseChildChangeEnum changeType, FirebaseChildEventDelegate<T> handler)
         {
-            throw new NotImplementedException();
+            var listener = new ChildTypeValueListener<T>(handler, changeType);
+            query.AddChildEventListener(listener);
+            return listener;
         }
 
         public IFirebaseQuery OrderByChild(string key)
@@ -69,32 +73,51 @@ namespace TinyXamarinFirebase.Froms.Droid
 
         public string Push()
         {
-            throw new NotImplementedException();
+            var newNode = databaseReference.Push();
+            return newNode.Key;
         }
 
         public string Push<T>(T data, FirebasePromise<bool> onCompletion = null)
         {
-            throw new NotImplementedException();
+            var newNode = databaseReference.Push();
+            var command = newNode.SetValue(ToNativeConverter.ToNative(data.GetType(), data));
+            if (onCompletion != null)
+                command.AddOnCompleteListener(new CommandCompletedListener(onCompletion));
+            return newNode.Key;
         }
 
         public string Put<T>(T data, FirebasePromise<bool> onCompletion = null)
         {
-            throw new NotImplementedException();
+            var newNode = databaseReference;
+            var convertedData = ToNativeConverter.ToNative(data.GetType(), data);
+            var command = newNode.SetValue(convertedData);
+            if (onCompletion != null)
+                command.AddOnCompleteListener(new CommandCompletedListener(onCompletion));
+            return newNode.Key;
         }
 
         public void Remove(FirebasePromise<bool> onCompletion = null)
         {
-            throw new NotImplementedException();
+            var command = databaseReference.RemoveValue();
+            if (onCompletion != null)
+                command.AddOnCompleteListener(new CommandCompletedListener(onCompletion));
         }
 
         public void RemoveObserver(object listener)
         {
-            throw new NotImplementedException();
+            if (listener is IChildEventListener childEventListener)
+            {
+                databaseReference.RemoveEventListener(childEventListener);
+            }
+            else if (listener is IValueEventListener eventListener)
+            {
+                databaseReference.RemoveEventListener(eventListener);
+            }
         }
 
         public void Transaction<T>(Action<FirebaseMutableData<T>> transaction, FirebasePromise<bool> onCompletion = null)
         {
-            throw new NotImplementedException();
+            databaseReference.RunTransaction(new FuncTransactionHandler<T>(transaction, onCompletion));
         }
     }
 }
