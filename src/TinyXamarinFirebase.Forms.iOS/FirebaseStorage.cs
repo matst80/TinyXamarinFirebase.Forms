@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Firebase.Storage;
 using Foundation;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
     public class FirebaseStorage : IFirebaseStorage
     {

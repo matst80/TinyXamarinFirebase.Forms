@@ -1,7 +1,7 @@
 ﻿using Firebase.Database;
 using System;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
 
 

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
 
     public class FirebaseDatabase : IFirebaseDatabase

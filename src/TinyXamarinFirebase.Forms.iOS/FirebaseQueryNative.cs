@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
     internal class FirebaseReferenceBaseNative : IFirebaseReferenceBase
     {

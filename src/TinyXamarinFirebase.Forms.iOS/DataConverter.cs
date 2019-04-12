@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
     public static class DataConverter
     {

@@ -1,7 +1,7 @@
 ﻿using Android.Gms.Tasks;
 using Firebase.Storage;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
     internal class DownloadUrlCompletedListener : Java.Lang.Object, IOnCompleteListener
     {

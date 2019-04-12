@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
     public class FirebaseException : Exception
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Firebase;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
     public class FirebaseStorage : IFirebaseStorage
     {

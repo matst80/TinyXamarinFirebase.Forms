@@ -1,6 +1,6 @@
 ﻿using Firebase.Database;
 
-namespace TinyXamarinFirebase.Froms.iOS
+namespace TinyXamarinFirebase.Forms.iOS
 {
     public class IosMutableData<T> : FirebaseMutableData<T>
     {

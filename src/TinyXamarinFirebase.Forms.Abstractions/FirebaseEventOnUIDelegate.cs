@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
     public class FirebaseEventOnUIDelegate<T> : FirebaseEventDelegateWithPersistantObject<T>
     {

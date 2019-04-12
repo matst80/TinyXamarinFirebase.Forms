@@ -5,7 +5,7 @@ using System.Linq;
 using Java.Lang;
 using System.Collections.Generic;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
 
     public static class ToNativeConverter

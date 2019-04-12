@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
 
     public class FirebaseEventDelegateWithPersistantObject<T> : FirebaseEventDelegate<T>, IFirebaseEventDelegateWithObject

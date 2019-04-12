@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
     public static class FirebaseXamarinHelper
     {

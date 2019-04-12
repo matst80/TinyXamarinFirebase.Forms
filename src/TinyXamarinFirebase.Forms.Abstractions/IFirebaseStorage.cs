@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace TinyXamarinFirebase.Froms
+namespace TinyXamarinFirebase.Forms
 {
     public interface IFirebaseStorage
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Firebase.Database;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
     internal class FirebaseQueryNative : FirebaseReferencBaseNative, IFirebaseQuery
     {

@@ -1,7 +1,7 @@
 ﻿using Firebase.Database;
 using System;
 
-namespace TinyXamarinFirebase.Froms.Droid
+namespace TinyXamarinFirebase.Forms.Droid
 {
     internal class FuncTransactionHandler<T> : Java.Lang.Object, Transaction.IHandler
     {
