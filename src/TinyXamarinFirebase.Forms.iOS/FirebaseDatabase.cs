@@ -23,7 +23,6 @@ namespace TinyXamarinFirebase.Forms.iOS
         private DatabaseReference GetNodeFromPath(string path)
         {
             DatabaseReference rootNode = instance.GetRootReference();
-            DatabaseQuery q = rootNode.GetQueryLimitedToLast(10);
 
             foreach (var part in path.Split('/'))
             {
@@ -50,12 +49,12 @@ namespace TinyXamarinFirebase.Forms.iOS
 
         public string Push<T>(string path, T data, FirebasePromise<bool> onCompletion = null)
         {
-            return GetChild(path).Push<T>(data, onCompletion);
+            return GetChild(path).Push(data, onCompletion);
         }
 
         public string Put<T>(string path, T data, FirebasePromise<bool> onCompletion = null)
         {
-            return GetChild(path).Put<T>(data, onCompletion);
+            return GetChild(path).Put(data, onCompletion);
         }
 
         public void Remove(string path, FirebasePromise<bool> onCompletion = null)

@@ -41,6 +41,16 @@ namespace TinyXamarinFirebase.Forms.Droid
                 }
                 return (Java.Lang.Object)data;
             }
+            else if (data is IDictionary dict)
+            {
+                var ret = new JavaDictionary<string, Java.Lang.Object>();
+                var valueType = DataConverter.GetItemType(dict.GetType(), 1);
+                foreach (var key in dict.Keys)
+                {
+                    ret.Add(key as string, ToNative(valueType, dict[key]));
+                }
+                return ret;
+            }
             else
             {
                 var ret = new JavaDictionary<string, Java.Lang.Object>();
@@ -133,7 +143,7 @@ namespace TinyXamarinFirebase.Forms.Droid
             return ret;
         }
 
-        private static Type GetItemType(Type type, int nr = 1)
+        internal static Type GetItemType(Type type, int nr = 1)
         {
             if (!type.GenericTypeArguments.Any())
             {
