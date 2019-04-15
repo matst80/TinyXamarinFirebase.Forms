@@ -2,6 +2,7 @@
 
 namespace TinyXamarinFirebase.Forms
 {
+
     [AttributeUsage(AttributeTargets.Property)]
     public class FirebaseAttribute : Attribute
     {

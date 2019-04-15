@@ -172,20 +172,31 @@ namespace TinyXamarinFirebase.Forms.iOS
                 }
                 return new NSObject();
             }
-
-            NSMutableDictionary ret = new NSMutableDictionary();
-            foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
+            else if (data is IDictionary dict)
             {
-                var prp = item.Value.Item1;
-                var key = (NSString)item.Key;
-                var objData = prp.GetValue(data);
-                if (objData != null)
+                var ret = new NSMutableDictionary();
+                foreach (var key in dict.Keys)
                 {
-                    var nativeData = ToNative(objData);
-                    ret.Add(key, nativeData);
+                    ret.Add((NSString)key, ToNative(dict[key]));
                 }
+                return ret;
             }
-            return ret;
+            else
+            {
+                var ret = new NSMutableDictionary();
+                foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
+                {
+                    var prp = item.Value.Property;
+                    var key = (NSString)item.Key;
+                    var objData = prp.GetValue(data);
+                    if (objData != null)
+                    {
+                        var nativeData = ToNative(objData);
+                        ret.Add(key, nativeData);
+                    }
+                }
+                return ret;
+            }
         }
     }
 }
