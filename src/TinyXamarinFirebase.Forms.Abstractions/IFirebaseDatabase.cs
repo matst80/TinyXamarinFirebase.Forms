@@ -29,6 +29,7 @@ namespace TinyXamarinFirebase.Forms
         string Push<T>(T data, FirebasePromise<bool> onCompletion = null);
         //string Push(string path);
         string Put<T>(T data, FirebasePromise<bool> onCompletion = null);
+        void Update<T>(T data, FirebasePromise<bool> onCompletion = null);
         void Remove(FirebasePromise<bool> onCompletion = null);
         void Transaction<T>(Action<FirebaseMutableData<T>> transaction, FirebasePromise<bool> onCompletion = null);
         void RemoveObserver(object listener);

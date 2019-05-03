@@ -21,7 +21,7 @@ namespace TinyXamarinFirebase.Forms
             if (!cache.ContainsKey(type))
             {
                 var ret = new Dictionary<string, (PropertyInfo, FirebaseAttribute)>();
-                foreach (var prp in type.GetRuntimeProperties().Where(d => d.CanWrite))
+                foreach (var prp in type.GetProperties().Where(d => d.CanWrite))
                 {
                     if (prp.GetCustomAttribute(typeof(FirebaseAttribute)) is FirebaseAttribute attr)
                     {

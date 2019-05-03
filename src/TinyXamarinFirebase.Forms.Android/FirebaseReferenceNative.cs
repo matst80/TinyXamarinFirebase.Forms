@@ -1,5 +1,6 @@
 ﻿using System;
 using Firebase.Database;
+using Android.Runtime;
 
 namespace TinyXamarinFirebase.Forms.Droid
 {
@@ -15,6 +16,7 @@ namespace TinyXamarinFirebase.Forms.Droid
         public object Observe<T>(FirebaseEventDelegate<T> handler)
         {
             var listener = new TypeValueListener<T>(handler);
+
             query.AddValueEventListener(listener);
             return listener;
         }
@@ -89,11 +91,20 @@ namespace TinyXamarinFirebase.Forms.Droid
         public string Put<T>(T data, FirebasePromise<bool> onCompletion = null)
         {
             var newNode = databaseReference;
-            var convertedData = ToNativeConverter.ToNative(data.GetType(), data);
+            var convertedData = ToNativeConverter.ToNative(typeof(T), data);
             var command = newNode.SetValue(convertedData);
             if (onCompletion != null)
                 command.AddOnCompleteListener(new CommandCompletedListener(onCompletion));
             return newNode.Key;
+        }
+
+        public void Update<T>(T data, FirebasePromise<bool> onCompletion = null)
+        {
+            var newNode = databaseReference;
+            var convertedData = ToNativeConverter.ToDictionary(typeof(T), data);
+
+            newNode.UpdateChildren(convertedData).AddOnCompleteListener(new CommandCompletedListener(onCompletion));
+
         }
 
         public void Remove(FirebasePromise<bool> onCompletion = null)

@@ -55,18 +55,20 @@ namespace TinyXamarinFirebase.Forms.iOS
                 var keyType = GetItemType(type, 0);
                 var dictType = GetItemType(type, 1);
                 var keysToRemove = new List<object>();
-                foreach(var key in nodeDict.Keys)
+                foreach (var key in nodeDict.Keys)
                 {
                     keysToRemove.Add(key);
                 }
                 foreach (var itemData in dict)
                 {
                     var key = Convert(itemData.Key, keyType);
-                    keysToRemove.Remove(key);
+                    if (keysToRemove.Contains(key))
+                    {
+                        keysToRemove.Remove(key);
+                    }
                     if (nodeDict.Contains(key))
                     {
-                        var item = Convert(itemData, dictType, nodeDict[key]);
-
+                        var item = Convert(itemData.Value, dictType, nodeDict[key]);
                     }
                     else
                     {
@@ -74,7 +76,7 @@ namespace TinyXamarinFirebase.Forms.iOS
                         nodeDict.Add(key, val);
                     }
                 }
-                foreach(var keyToRemove in keysToRemove)
+                foreach (var keyToRemove in keysToRemove)
                 {
                     if (nodeDict.Contains(keyToRemove))
                     {
@@ -103,6 +105,11 @@ namespace TinyXamarinFirebase.Forms.iOS
             return ret;
         }
 
+        internal static NSDictionary ToDictionary<T>(T data)
+        {
+            return ToNative(data) as NSDictionary;
+        }
+
         private static Type GetItemType(Type type, int nr = 1)
         {
             if (!type.GenericTypeArguments.Any())
@@ -127,7 +134,7 @@ namespace TinyXamarinFirebase.Forms.iOS
             return (T)ret;
         }
 
-        public static NSObject ToNative(object data)
+        public static NSObject ToNativePrimitive(object data)
         {
             if (data is int i)
             {
@@ -153,31 +160,31 @@ namespace TinyXamarinFirebase.Forms.iOS
             {
                 return new NSString(str);
             }
-            if (data is IDictionary dict)
-            {
-                throw new NotImplementedException();
-            }
             return null;
         }
 
         public static NSObject ToNative<T>(T data)
         {
-            var type = typeof(T);
+            if (data == null)
+                return null;
+            var type = data.GetType();
 
             if (type.IsPrimitive || data is string)
             {
                 if (data is T)
                 {
-                    return ToNative((object)data);
+                    return ToNativePrimitive(data);
                 }
                 return new NSObject();
             }
-            else if (data is IDictionary dict)
+            if (data is IDictionary dict)
             {
                 var ret = new NSMutableDictionary();
                 foreach (var key in dict.Keys)
                 {
-                    ret.Add((NSString)key, ToNative(dict[key]));
+                    var itemdata = dict[key];
+                    if (itemdata != null)
+                        ret.Add(new NSString(key.ToString()), ToNative(itemdata));
                 }
                 return ret;
             }
@@ -187,12 +194,15 @@ namespace TinyXamarinFirebase.Forms.iOS
                 foreach (var item in TypePropertyHelper.GetFirebaseProperties(type))
                 {
                     var prp = item.Value.Property;
-                    var key = (NSString)item.Key;
-                    var objData = prp.GetValue(data);
-                    if (objData != null)
+                    if (!item.Value.CustomAttribute.ReadOnly)
                     {
-                        var nativeData = ToNative(objData);
-                        ret.Add(key, nativeData);
+                        var key = new NSString(item.Key);
+                        var objData = prp.GetValue(data);
+                        if (objData != null)
+                        {
+                            var nativeData = ToNative(objData);
+                            ret.Add(key, nativeData);
+                        }
                     }
                 }
                 return ret;

@@ -22,12 +22,19 @@ namespace TinyXamarinFirebase.Forms.Droid
         {
             if (snapshot.Exists())
             {
-                FirebaseXamarinHelper.RunOnUIThread(() =>
+                //FirebaseXamarinHelper.RunOnUIThread(() =>
+                //{
+                try
                 {
                     var snapData = DataConverter.Convert<T>(snapshot.Value, GetObjectFromHandler(eventDelegate));
                     eventDelegate.OnSnapshot(snapData);
                     SetObjectFromHandler(eventDelegate, snapData);
-                });
+                }
+                catch (System.Exception ex)
+                {
+                    var i = ex;
+                }
+
             }
             else
             {

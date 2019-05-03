@@ -12,7 +12,7 @@ namespace TinyXamarinFirebase.Forms.Droid
 
         public FirebaseStorage(FirebaseApp app)
         {
-            storage = Firebase.Storage.FirebaseStorage.GetInstance(app, "gs://people-at-coor-dev.appspot.com"); 
+            storage = Firebase.Storage.FirebaseStorage.GetInstance(app); 
         }
 
         public async Task<bool> DeleteFile(string path)

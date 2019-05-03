@@ -23,13 +23,13 @@ namespace TinyXamarinFirebase.Forms.iOS
             {
                 if (snapshot.Exists)
                 {
-                    FirebaseXamarinHelper.RunOnUIThread(() =>
-                    {
+                    //FirebaseXamarinHelper.RunOnUIThread(() =>
+                    //{
                         var data = snapshot.GetValue();
                         var snapData = DataConverter.Convert<T>(data, GetObjectFromHandler(handler));
                         SetObjectFromHandler(handler, snapData);
                         handler.OnSnapshot(snapData);
-                    });
+                    //});
                 }
                 else
                 {

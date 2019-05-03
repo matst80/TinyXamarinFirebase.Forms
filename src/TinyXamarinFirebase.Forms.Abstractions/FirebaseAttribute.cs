@@ -11,6 +11,8 @@ namespace TinyXamarinFirebase.Forms
             Name = name;
         }
 
+        public bool ReadOnly { get; set; }
+
         public string Name { get; set; }
     }
 }

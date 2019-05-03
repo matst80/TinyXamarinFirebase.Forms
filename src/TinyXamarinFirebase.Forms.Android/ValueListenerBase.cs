@@ -6,7 +6,7 @@
         {
             if (handler is IFirebaseEventDelegateWithObject withObject && snapData != null)
             {
-                if (withObject.DataInstance != snapData)
+                if (!withObject.DataInstance.Equals(snapData))
                 {
                     withObject.DataInstance = snapData;
                 }

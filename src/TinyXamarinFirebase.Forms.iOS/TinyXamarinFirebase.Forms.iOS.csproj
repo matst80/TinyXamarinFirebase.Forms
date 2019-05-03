@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
-      <Project>{F93A61F2-2A1E-4898-8DD7-4115BBC64174}</Project>
+      <Project>{DF4EFFC3-0959-48E1-83F8-C5FA63FB9A09}</Project>
       <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>

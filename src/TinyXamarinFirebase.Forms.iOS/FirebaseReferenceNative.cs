@@ -54,8 +54,10 @@ namespace TinyXamarinFirebase.Forms.iOS
 
         public string Put<T>(T data, FirebasePromise<bool> onCompletion = null)
         {
-            var rootNode = databaseReference;
-            rootNode.SetValue(DataConverter.ToNative(data), (error, reference) =>
+
+            var nativeData = DataConverter.ToNative(data);
+
+            databaseReference.SetValue(nativeData, (error, reference) =>
             {
                 if (onCompletion != null)
                 {
@@ -66,7 +68,24 @@ namespace TinyXamarinFirebase.Forms.iOS
                     }
                 }
             });
-            return rootNode.Key;
+            return databaseReference.Key;
+
+
+        }
+
+        public void Update<T>(T data, FirebasePromise<bool> onCompletion = null)
+        {
+            databaseReference.UpdateChildValues(DataConverter.ToDictionary(data), (error, reference) =>
+            {
+                if (onCompletion != null)
+                {
+                    onCompletion.OnComplete(error == null);
+                    if (error != null)
+                    {
+                        onCompletion.OnError(new FirebaseException(error));
+                    }
+                }
+            });
         }
 
         public void Remove(FirebasePromise<bool> onCompletion = null)
@@ -104,7 +123,8 @@ namespace TinyXamarinFirebase.Forms.iOS
                     transaction.Invoke(new IosMutableData<T>(currentData));
                 }
                 return TransactionResult.Success(currentData);
-            }, (error, commited, snapshot) => {
+            }, (error, commited, snapshot) =>
+            {
                 if (onCompletion != null)
                 {
                     onCompletion.OnComplete(commited);
@@ -115,5 +135,7 @@ namespace TinyXamarinFirebase.Forms.iOS
                 }
             });
         }
+
+
     }
 }
