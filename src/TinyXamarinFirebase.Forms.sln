@@ -11,6 +11,8 @@ Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "TinyXamarinFirebase.Forms.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyXamarinFirebase.Forms.Abstractions", "TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj", "{A5169636-0870-4368-A889-B75B9507B77F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example-Tests", "Example-Tests", "{A23A182F-CA01-4711-96E9-C13313126231}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

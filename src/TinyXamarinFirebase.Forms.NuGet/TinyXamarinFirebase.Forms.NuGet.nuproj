@@ -7,7 +7,7 @@
     <ProjectGuid>{C0517121-CB66-48E8-98A2-8725BA4E92AA}</ProjectGuid>
     <Description>TinyXamarinFirebase.Forms</Description>
     <PackageId>TinyXamarinFirebase.Forms</PackageId>
-    <PackageVersion>1.0.26</PackageVersion>
+    <PackageVersion>1.0.27</PackageVersion>
     <Authors>mats</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -34,14 +34,17 @@
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Android\TinyXamarinFirebase.Forms.Android.csproj">
       <Project>{6572AABD-9574-4B15-997B-425BF5A9B0FE}</Project>
       <Name>TinyXamarinFirebase.Forms.Android</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.iOS\TinyXamarinFirebase.Forms.iOS.csproj">
       <Project>{12D7432E-D280-4EEF-AED6-09135D6985CB}</Project>
       <Name>TinyXamarinFirebase.Forms.iOS</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
       <Project>{A5169636-0870-4368-A889-B75B9507B77F}</Project>
       <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

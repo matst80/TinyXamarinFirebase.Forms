@@ -94,7 +94,7 @@ namespace TinyXamarinFirebase.Forms.Droid
                         var objData = prp.GetValue(data);
                         if (objData != null)
                         {
-                            ret.Add(key, ToNative(objData.GetType(), objData));
+                            ret.Add(key, ToNative(prp.PropertyType, objData));
                         }
                         else
                         {

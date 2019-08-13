@@ -13,6 +13,7 @@
     <RootNamespace>TinyXamarinFirebase.Forms</RootNamespace>
     <AssemblyName>TinyXamarinFirebase.Forms</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
   </PropertyGroup>
@@ -24,10 +25,12 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -115,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
-      <Project>{A5169636-0870-4368-A889-B75B9507B77F}</Project>
+      <Project>{52981E70-6A41-40D8-AB6D-833F54CA6605}</Project>
       <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
