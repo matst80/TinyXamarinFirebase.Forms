@@ -14,6 +14,7 @@
     <RootNamespace>TinyXamarinFirebase.Forms</RootNamespace>
     <AssemblyName>TinyXamarinFirebase.Forms</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
   </PropertyGroup>
@@ -26,10 +27,12 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <DesignTimeBuild>false</DesignTimeBuild>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <DesignTimeBuild>false</DesignTimeBuild>

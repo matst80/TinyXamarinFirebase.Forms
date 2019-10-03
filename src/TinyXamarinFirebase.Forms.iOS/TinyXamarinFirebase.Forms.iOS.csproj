@@ -29,7 +29,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ConsolePause>true</ConsolePause>
     <Commandlineparameters></Commandlineparameters>
-    <DeviceSpecificBuild></DeviceSpecificBuild>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchProfiling></MtouchProfiling>
     <MtouchUseThumb></MtouchUseThumb>
     <BuildIpa></BuildIpa>
@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
-      <Project>{DF4EFFC3-0959-48E1-83F8-C5FA63FB9A09}</Project>
+      <Project>{52981E70-6A41-40D8-AB6D-833F54CA6605}</Project>
       <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
