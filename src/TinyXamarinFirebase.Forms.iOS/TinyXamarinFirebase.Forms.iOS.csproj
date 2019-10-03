@@ -29,7 +29,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ConsolePause>true</ConsolePause>
     <Commandlineparameters></Commandlineparameters>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchProfiling></MtouchProfiling>
     <MtouchUseThumb></MtouchUseThumb>
     <BuildIpa></BuildIpa>
@@ -56,7 +56,7 @@
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\9.2.0-5\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v8.1\Mono.Android.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Core">
-      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Core.5.1.3\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Core.5.2.0\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Auth">
       <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Auth.5.0.4.1\lib\Xamarin.iOS10\Firebase.Auth.dll</HintPath>
@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TinyXamarinFirebase.Forms.Abstractions\TinyXamarinFirebase.Forms.Abstractions.csproj">
-      <Project>{52981E70-6A41-40D8-AB6D-833F54CA6605}</Project>
+      <Project>{A5169636-0870-4368-A889-B75B9507B77F}</Project>
       <Name>TinyXamarinFirebase.Forms.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
