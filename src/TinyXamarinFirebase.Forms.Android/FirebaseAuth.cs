@@ -16,6 +16,14 @@ namespace TinyXamarinFirebase.Forms.Droid
             instance = Firebase.Auth.FirebaseAuth.GetInstance(app);
         }
 
+        public string CurrentUserId
+        {
+            get
+            {
+                return instance.CurrentUser?.Uid;
+            }
+        }
+
         public void SignInWithCustomToken(string token, FirebaseLoginPromise completedListener)
         {
             instance.SignInWithCustomToken(token).AddOnCompleteListener(new LoginCompletedListener(completedListener));

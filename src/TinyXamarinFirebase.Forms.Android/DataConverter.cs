@@ -62,7 +62,7 @@ namespace TinyXamarinFirebase.Forms.Droid
                     var objData = prp.GetValue(data);
                     if (objData != null)
                     {
-                        ret.Add(key, ToNative(objData.GetType(), objData));
+                        ret.Add(key, ToNative(prp.PropertyType, objData));
                     }
                 }
                 return ret;
@@ -94,7 +94,7 @@ namespace TinyXamarinFirebase.Forms.Droid
                         var objData = prp.GetValue(data);
                         if (objData != null)
                         {
-                            ret.Add(key, ToNative(objData.GetType(), objData));
+                            ret.Add(key, ToNative(prp.PropertyType, objData));
                         }
                         else
                         {
@@ -216,7 +216,7 @@ namespace TinyXamarinFirebase.Forms.Droid
                         var data = dict[key];
 
                         var internalData = prp.GetValue(ret);
-                        var newdata = Convert(data, prp.PropertyType, internalData);
+	                        var newdata = Convert(data, prp.PropertyType, internalData);
                         try
                         {
                             prp.SetValue(ret, newdata);

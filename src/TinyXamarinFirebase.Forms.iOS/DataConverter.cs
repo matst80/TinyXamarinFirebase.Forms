@@ -43,7 +43,15 @@ namespace TinyXamarinFirebase.Forms.iOS
             {
                 return Convert(dict, resultType, objectToModify);
             }
-            return Activator.CreateInstance(resultType);
+
+            if (resultType.IsValueType && resultType != typeof(string))
+            {
+                return Activator.CreateInstance(resultType);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static object Convert(NSDictionary dict, Type returnType, object objectToModify = null)
@@ -91,14 +99,25 @@ namespace TinyXamarinFirebase.Forms.iOS
                 if (dict.ContainsKey(key))
                 {
                     var data = dict[key];
-                    try
+                    //try
+                    //{
+                    var internalData = prp.GetValue(ret);
+                    prp.SetValue(ret, Convert(data, prp.PropertyType, internalData));
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    var i = ex;
+                    //}
+                }
+                else
+                {
+                    if (prp.PropertyType.IsValueType && prp.PropertyType != typeof(string))
                     {
-                        var internalData = prp.GetValue(ret);
-                        prp.SetValue(ret, Convert(data, prp.PropertyType, internalData));
+                        prp.SetValue(ret, Activator.CreateInstance(prp.PropertyType));
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        var i = ex;
+                        prp.SetValue(ret, null);
                     }
                 }
             }

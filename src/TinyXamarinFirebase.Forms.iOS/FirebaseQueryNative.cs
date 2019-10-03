@@ -33,6 +33,7 @@ namespace TinyXamarinFirebase.Forms.iOS
                 }
                 else
                 {
+                    handler.OnSnapshot(default (T));
                     handler?.OnError?.Invoke(new SnapshotNotFoundException());
                 }
 

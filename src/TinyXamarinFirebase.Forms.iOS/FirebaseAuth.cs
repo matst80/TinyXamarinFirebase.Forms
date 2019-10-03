@@ -14,6 +14,14 @@ namespace TinyXamarinFirebase.Forms.iOS
 
         }
 
+        public string CurrentUserId
+        {
+            get
+            {
+                return Firebase.Auth.Auth.DefaultInstance?.CurrentUser?.Uid;
+            }
+        }
+
         public void SignInWithCustomToken(string token, FirebaseLoginPromise completedPromise)
         {
             Firebase.Auth.Auth.DefaultInstance.SignInWithCustomToken(token, (authResult, error) =>
