@@ -59,13 +59,13 @@
       <HintPath>..\packages\Xamarin.Firebase.iOS.Core.5.1.3\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Auth">
-      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Auth.5.0.4.1\lib\Xamarin.iOS10\Firebase.Auth.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Auth.5.0.4.1\lib\Xamarin.iOS10\Firebase.Auth.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Database">
-      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Database.5.0.3\lib\Xamarin.iOS10\Firebase.Database.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Database.5.0.3\lib\Xamarin.iOS10\Firebase.Database.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Storage">
-      <HintPath>..\..\..\Coor.MyWorkplace\src\packages\Xamarin.Firebase.iOS.Storage.3.0.2\lib\Xamarin.iOS10\Firebase.Storage.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Storage.3.0.2\lib\Xamarin.iOS10\Firebase.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

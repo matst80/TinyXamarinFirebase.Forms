@@ -7,7 +7,7 @@
     <ProjectGuid>{C0517121-CB66-48E8-98A2-8725BA4E92AA}</ProjectGuid>
     <Description>TinyXamarinFirebase.Forms</Description>
     <PackageId>TinyXamarinFirebase.Forms</PackageId>
-    <PackageVersion>1.0.41</PackageVersion>
+    <PackageVersion>1.0.43</PackageVersion>
     <Authors>mats</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

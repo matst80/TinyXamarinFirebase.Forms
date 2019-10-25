@@ -18,7 +18,7 @@ namespace TinyXamarinFirebase.Forms.Droid
         {
             if (task.IsComplete)
             {
-                storageReference.GetDownloadUrl().AddOnCompleteListener(downloadListener);
+                storageReference.DownloadUrl.AddOnCompleteListener(downloadListener);
             }
         }
     }
